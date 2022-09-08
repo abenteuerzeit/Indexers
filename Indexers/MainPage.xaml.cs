@@ -24,14 +24,20 @@ namespace Indexers
             if (!string.IsNullOrEmpty(text))
             {
                 Name name = new(text);
-                PhoneNumber number = this.phoneBook[name];
-                phoneNumber.Text = string.IsNullOrEmpty(number.Text) ? "Not Found" : number.Text;
+                PhoneNumber result = this.phoneBook[name];
+                phoneNumber.Text = string.IsNullOrEmpty(result.Text) ? "Not Found" : result.Text;
             }
         }
 
         private void findByPhoneNumberClick(object sender, RoutedEventArgs e)
         {
-            // TODO:
+            string text = phoneNumber.Text;
+            if (!string.IsNullOrEmpty(text))
+            {
+                PhoneNumber number = new(text);
+                Name result = this.phoneBook[number];
+                name.Text = string.IsNullOrEmpty(result.Text) ? "Not Found" : result.Text;
+            }
         }
 
         private void addClick(object sender, RoutedEventArgs e)
